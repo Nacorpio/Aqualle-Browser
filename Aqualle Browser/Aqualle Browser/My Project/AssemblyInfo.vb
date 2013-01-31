@@ -9,11 +9,11 @@ Imports System.Runtime.InteropServices
 ' Review the values of the assembly attributes
 
 <Assembly: AssemblyTitle("Aqualle Browser")> 
-<Assembly: AssemblyDescription("")> 
-<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyDescription("A browser made for Windows and Mac in the future.")> 
+<Assembly: AssemblyCompany("Aqualle")> 
 <Assembly: AssemblyProduct("Aqualle Browser")> 
-<Assembly: AssemblyCopyright("Copyright ©  2013")> 
-<Assembly: AssemblyTrademark("")> 
+<Assembly: AssemblyCopyright("Copyright © Aqualle Development 2013")> 
+<Assembly: AssemblyTrademark("Aqualle Development™")> 
 
 <Assembly: ComVisible(False)>
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' by using the '*' as shown below:
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")> 
-<Assembly: AssemblyFileVersion("1.0.0.0")> 
+<Assembly: AssemblyVersion("0.0.1.0")> 
+<Assembly: AssemblyFileVersion("0.0.1.0")> 
