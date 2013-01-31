@@ -12,6 +12,56 @@ Public Class Engine
     Private Const HISTORY_P As String = MAIN_PATH & "\Browser\Options\h.adb"
 
     ''' <summary>
+    ''' The cache that is stored from the information.
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+
+    Public ReadOnly Property Cache As String()
+        Get
+            If FileIO.FileSystem.DirectoryExists(OPTIONS_D) Then
+                Dim cacheBlock() As String = New String() {}
+                For i As Integer = 0 To FileIO.FileSystem.GetFiles(OPTIONS_D).Count - 1
+                    If FileIO.FileSystem.GetFileInfo(FileIO.FileSystem.GetFiles(OPTIONS_D)(i)).FullName.StartsWith("cache_") Then
+                        If cacheBlock(i) = Nothing Then
+                            cacheBlock(i) = FileIO.FileSystem.GetFiles(OPTIONS_D)(i)
+                        End If
+                    End If
+                Next
+                Return cacheBlock
+            Else
+                Return Nothing
+            End If
+        End Get
+    End Property
+
+    ''' <summary>
+    ''' The cookies in the web browser.
+    ''' </summary>
+    ''' <value></value>
+    ''' <returns></returns>
+    ''' <remarks></remarks>
+
+    Public ReadOnly Property Cookies As String()
+        Get
+            If FileIO.FileSystem.DirectoryExists(COOKIES_D) Then
+                Dim cookieBlock() As String = New String() {}
+                For i As Integer = 0 To FileIO.FileSystem.GetFiles(COOKIES_D).Count - 1
+                    If FileIO.FileSystem.GetFiles(COOKIE_P)(i).StartsWith("c_") Then
+                        If cookieBlock(i) = Nothing Then
+                            cookieBlock(i) = FileIO.FileSystem.GetFiles(COOKIE_P)(i)
+                        End If
+                    End If
+                Next
+                Return cookieBlock
+            Else
+                Return Nothing
+            End If
+        End Get
+    End Property
+
+    ''' <summary>
     ''' The current version of the browser.
     ''' </summary>
     ''' <value></value>
@@ -48,6 +98,21 @@ ON_START:
         If FileIO.FileSystem.DirectoryExists(COOKIES_D) Then
             For Each f As String In FileIO.FileSystem.GetFiles(COOKIES_D)
                 If f.StartsWith("c_") Then
+                    FileIO.FileSystem.DeleteFile(f)
+                End If
+            Next
+        End If
+    End Sub
+
+    ''' <summary>
+    ''' Clear all of the cache.
+    ''' </summary>
+    ''' <remarks></remarks>
+
+    Public Sub ClearCache()
+        If FileIO.FileSystem.DirectoryExists(OPTIONS_D) Then
+            For Each f As String In FileIO.FileSystem.GetFiles(OPTIONS_D)
+                If f.StartsWith("cache_") Then
                     FileIO.FileSystem.DeleteFile(f)
                 End If
             Next
