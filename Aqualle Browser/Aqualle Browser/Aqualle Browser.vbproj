@@ -74,6 +74,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="ElementEditor.Designer.vb">
+      <DependentUpon>ElementEditor.vb</DependentUpon>
+    </Compile>
+    <Compile Include="ElementEditor.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Engine.vb" />
     <Compile Include="Form1.vb">
       <SubType>Form</SubType>
@@ -101,6 +107,9 @@
     <Compile Include="Settings and Saving\EntryCollection.vb" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="ElementEditor.resx">
+      <DependentUpon>ElementEditor.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.vb</DependentUpon>
     </EmbeddedResource>
